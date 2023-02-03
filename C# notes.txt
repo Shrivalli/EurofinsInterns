@@ -1,0 +1,425 @@
+.NET  - platform
+
+.NET - framework(4.6) - Windows OS - Base class libraries,Runtime Environment (CLR)
+Common Language Runtime
+
+.NET Core - Windows, Linux, Mac 
+
+Visual Studio 2019/2022 - IDE (Integrated Development Environment)
+place where we type the source code(program), compile(checking for syntax)
+ and execute the program.
+
+Download and install VS
+1. .NET framework
+2. Server
+3. IDE
+4. Languages - c#,VB.NET, J#, F#
+
+Types of Applications in .NET
+1. Stand Alone Application - Console App(without GUI)/Windows App(With GUI)
+2. Web Applications - 
+3. Mobile Applications - Xamarin
+
+Datatypes in .NET core:
+1. Value Types - int, bool, datetime, float, enum, struct,
+2. Reference types - string, object, class, interface, delegate, 
+
+
+Value types - directly store the value in the variable
+int i=5; //set method
+j=i;
+j(5)
+i=10;
+Console.WriteLine(i); //get method
+
+reference types - they store the address in which the value is stored
+string s="Ram"
+s--> memory(0xfc1def) --> Ram
+s1=s
+s="Janani"
+
+int age=10;
+struct student
+{
+public int mathsmarks;
+public int englishmarks;
+}
+
+class sample
+{
+public static void Main()
+{
+student s1=new student();
+s1.mathsmarks=70;
+s1.englishmarks=80;
+students s2=s1;
+Console.WriteLine("Student 1 Maths Marks: "+s1.mathsmarks);
+Console.WriteLine("Student 1 English Marks: "+s1.englishmarks);
+Console.WriteLine("Student 2 Maths Marks: "+s2.mathsmarks);
+Console.WriteLine("Student 2 Maths Marks: "+s2.englishmarks);
+s1.mathsmarks=90;
+s1.englishmarks=100;
+Console.WriteLine("Student 1 Maths Marks: "+s1.mathsmarks);
+Console.WriteLine("Student 1 English Marks: "+s1.englishmarks);
+Console.WriteLine("Student 2 Maths Marks: "+s2.mathsmarks);
+Console.WriteLine("Student 2 Maths Marks: "+s2.englishmarks);
+}
+}
+
+TypeCasting:
+1. Implicit type conversion - int converted to float
+2. Explicit type conversion 
+3. Boxing - converting a value type to reference type
+4. UnBoxing - converting a ref type to value type
+
+OOPS:
+1. Class - Generalization concept
+2. Object - Specialization
+3. Data Encapuslation - wrapping up of member variables and methods into one entity
+called class
+4. Data Abstraction - Hiding of Unnecessary details/ implementation from the user
+Access Specifiers
+1. private - all member variables of a class are private to the class.
+2. protected - accesible to the class and derived class
+3. internal - all classes are internal and they are accessible within the namespace.
+4. public - across namespace. Namespaces are public by default
+
+
+namespace - collection of classes
+
+default values:
+boolean - false
+string - null
+int and float -0
+datetime - 1-1-01
+
+CLR 
+1. Memory management  - codes that can be managed by CLR - managed codes
+2. Unmanaged codes - codes that cannot be managed by CLR
+
+1. Constructor - allocates memory for the member variables 
+called when we instantiate the class (employee e1=new employee())
+used to initialize the member variables
+special method which has the same name of the class
+A default constructor is assigned to every class by .NET fw
+Constructor should always be public and they should not have return type.
+
+Overloaded constructor:
+A constructor having different signatures:
+1. number of arguments
+2. datatype
+3. order of arguments
+
+2. Destructor
+Finalize () method - .NET fw memory deallocation. This cannot be called explicitly.
+Garabage Collector - GC0, GC1,
+Dispose() - to release the resources.
+we can call explicitly.
+
+string? ename; //nullable type
+
+If private variables has to be accessed outside the class, we need to create properties
+for them.
+
+1. get - accessor - fetch the value of a variable. Console.WriteLine(i);
+2. set - Mutator - assign the value to a variable. i=10;
+
+Advantages of using Properties
+1. Individual access can be given if its property
+2. inputs can be filtered before its assigned to the variable.
+
+How to debug the code:
+Breakpoint -  enable and disable (step into, step over and step out)
+
+Auto implemented properties {get;set;}
+Inheritance - reusing the features of the base class 
+: is the symbol using which inheritance is done
+
+
+A base class method is given a new definition in the derived class - method overriding
+the base class should have virtual keyword 
+derived class should have override keyword
+
+Client class
+call the methods of the base and dervied 
+
+Dynamic polymorphism:
+The base class reference variable can point to any of its derived class memory
+Shape s=new Rectangle();
+s=new Circle();
+s=new Triangle();
+
+If the derived class has overriden the method, it will call the derived class method 
+else the base class method will be called.
+
+
+Collections:(Non generic collections)
+1. Array - collection of homogeneous datatypes
+2. ArrayList -  collection of hetrogeneous datatype
+3. Hashtable
+4. Queue
+5. Stack
+
+Generics - Type specific collection
+1. List<T>
+2. Dictionary<Tkey,Tvalue>
+3. HashSet<T>
+
+Abstract methods: 
+A method without definition is called abstract method and they should be contained
+in an abstract class.
+A class which contains atleast one abstract method is called an abstract class.
+We cannot create instance of these abstract classes.
+Shape s=new Shape() //Error
+Shape s=new Rectangle() //will work
+
+interface: 
+collections of abstract methods (latest version - non abstract methods)
+rules of specifications is defined in an interface.
+
+Interface can be considered as an alternate for Multiple Inheritance
+A class can implement multiple interfaces.
+One interface can be implemented by more than one class.
+If a class implements an interface, all the methods of the interface has to be defined
+or impemented by the class.
+
+Exceptions:
+Errors:
+1. Syntax Errors
+2. Logical Errors
+3. runtime Errors
+
+Syntax and logical errors can be rectified.
+Runtime Errors cannot be rectified and have to handled.
+
+Exception Handling:
+1. try block - write all set of statements which might cause error
+2. catch block - exception handler
+3. Finally block - release resources. This will get executed irrespective of exception
+occurs or not.
+
+Exception is the base class from which all exceptions are inherited
+SystemException(built in) and ApplicationException(user defined) are two derived classes 
+
+catch(FormatException e)
+
+FormatException e=new FormatException();
+
+catch(Exception e)
+Exception e=new FormatException();
+
+
+UserDefined Exception:
+class should inherit ApplicationException class
+
+Delegate:
+Function Pointer -> a pointer which is pointing to the memory of a function
+
+1. abstraction
+2. loose coupling 
+
+Single cast delegate - one instance of a delegate is invoking a method
+multi cast delegate
+
+File handling .NET
+
+ADO.NET - framework
+
+To connect the C# front end to (SQL) DB
+namespace - System.Data.SqlClient
+
+1. SqlConnection - 
+Data Source= server in which sql is installed (.\\sqlexpress)
+Initial Catalog - Database name
+Integrated Security = true (Windows Authentication)(or)
+User ID=abc;Password=def; (SQL Authentication)
+
+open() - opens the connection with the backend
+
+2.SqlCommand - 
+Select - ExecuteReader() - all the records returned
+Insert/Update/Delete - ExecuteNonQuery()- return value will be an integer 
+- how many rows affected 
+
+3.SqlDataReader - holds the values returned by ExecuteReader()
+
+Disconnected Architecture:
+SqlDataAdapter
+DataSet
+DataTable
+
+DLL and EXE:
+Dynamic Link Library - cannot execute by itself. Need a host application to execute this
+ctrl+c
+reusable piece of code.
+
+LINQ:
+Language Integrated Query
+Adv
+1. Background compilation - 
+2. Syntax is of C#/VB.NET
+3. SQL - query data from tables/databases
+query collections(LINQ to collections)
+query object(LINQ to Object)
+query sql(ADO.NET)(LINQ for SQL)
+query XML(LINQ to XML)
+
+two syntax:
+1. query syntax
+select * from tablename where condition
+LINQ:
+var result=(from variable in collection
+		where condition
+		select variable).ToList();
+
+2.Method Syntax
+numbers.Where(condition).Select(var)
+Lambda expression =>
+numbers.Where(var=>var%2==0).Select(var=>var)
+
+Unit Testing:
+
+test the module before integration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
