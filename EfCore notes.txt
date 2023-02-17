@@ -1,0 +1,88 @@
+Entity Framework Core: - connect to the back end. 
+Framework which contains the classes which help us to map the tables to classes
+and vice versa.
+
+ORM - Object Relation Mapping
+
+Relation - Table in back end
+Object - Instance of a class - Front end
+
+Two important classes used in EFCore:
+
+1. DbContext: Front end database - collection of mapped classes gets created
+2. DbSet<classname> - property which contains set of all records from the table
+
+Two Approaches:
+1. DbFirst Approach
+
+Create a class for every table 
+
+Create table Product(
+pid int primary key,
+pname varchar(20),
+price float,
+qty int
+)
+
+class Product
+{
+int pid{get;set;}
+string pname{get;set;}
+float price{get;set;}
+int qty{get;set;}
+}
+
+Context - Front End database - DbSet<table>
+class onlineshoppingContext:DbContext-->(EntityFrameworkCore)
+{
+
+public DbSet<Product> Products{get;set;} --> select * from Products
+public DbSet<Supplier> Suppliers{get;set;}
+}
+
+Tools - Nuget Package Manager 
+1. Entity Framework Core
+2. EF Core SQL
+3. EF Core tools
+
+Scaffold-DbContext "Server=.;Database=OrgWB;Trusted_Connection=True;"Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Code First Approach:
+
+Every class will be converted into a Table
+Context class - Database
+
+
+Context.cs
+
+  class HospitalContext:DbContext
+    {
+        private const string connectionString = "Server=(localdb)\\mssqllocaldb;Database=HospitalDB;Trusted_Connection=True;";
+        public HospitalContext() { }
+        public HospitalContext(DbContextOptions options) : base(options)
+        {
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(connectionString);
+        }
+
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+
+    }
+}
+
+add-migration "migr1"
+update-database
+
+
+In appsettings.json:
+ "ConnectionStrings": {
+      "DefaultConnection": "Server=.;Database=OrgWB;Trusted_Connection=True;"
+    },
+
+ Startup.cs
+ services.AddDbContext<OrganizationContext>(options =>
+       options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
