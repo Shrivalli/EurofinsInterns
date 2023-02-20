@@ -1,0 +1,182 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LINQEg
+{
+    class student
+    {
+        public float Salary { get; set; }
+        public string Name { get; set; }
+
+    }
+    
+    internal class employee:IComparable
+    {
+        public int Eid { get; set; }
+        public string Ename { get; set; }
+        public float Salary { get; set; }
+        public string City { get; set; }
+
+        public employee() { }
+        public employee(int eid, string ename, float sal, string city)
+        {
+            Eid = eid;
+            Ename = ename;
+            Salary = sal;
+            City = city;
+        }
+
+        static List<employee> employees = new();
+        public static IEnumerable<employee> getAllEmployees()
+        {
+            employees.Add(new employee(1, "abc", 2344, "Chennai"));
+            employees.Add(new employee(2, "adsggfbc", 40000, "Pune"));
+            employees.Add(new employee(3, "absdfgc", 2344, "Bangalore"));
+            employees.Add(new employee(4, "abcsdfger", 80000, "Chennai"));
+            employees.Add(new employee(5, "abcadfdsf", 2344, "Pune"));
+            employees.Add(new employee(6, "abcdef", 20000, "Bangalore"));
+            return employees;
+
+        }
+
+        //public int CompareTo(employee? other)
+        //{
+        //    if (this.Salary == other.Salary)
+        //        return 0;
+        //    else
+        //        //if (string.Compare(this.City,other.City)==-1)
+        //        if(this.Salary<other.Salary)
+        //    {
+        //        return -1;
+        //    }
+        //    else
+        //    return 1;
+
+        //}
+
+        public int CompareTo(object? obj)
+        {
+            student s=obj as student;
+            if (this.Salary == s.Salary)
+                return 0;
+            else
+                if (this.Salary < s.Salary)
+                return -1;
+            else
+                return 1;
+
+
+        }
+
+        
+
+
+    }
+}
+
+
+empclient.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LINQEg
+{
+    internal class empclient
+    {
+        public static IEnumerable<employee> emps = employee.getAllEmployees();
+        public static void Main()
+        {
+            employee e1 = new employee(101,"ram",9000,"Pune");
+            employee e2 = new employee(102, "seetha", 89899, "Bangalore");
+            employee e3 = new employee(101, "ram", 400, "Chennai");
+            employee e4 = e1;
+            employee e5 = null;
+            employee e6 = null;
+            List<employee> emplist = new();
+            emplist.Add(e1);
+            emplist.Add(e2);
+            emplist.Add(e3);
+            emplist.Add(e4);
+            //emplist.Add(e5);
+            //emplist.Add(e6);
+            //emplist.Sort();
+            //foreach(var item in emplist)
+            //{
+            //    Console.WriteLine(item.City+" "+item.Salary);
+            //}
+            student s1 = new student();
+            s1.Salary = 5000;
+            s1.Name = "Vandhana";
+            //int i;
+            List<object> emstlist = new();
+            emstlist.Add(s1);
+            emstlist.Add(e1);
+            emstlist.Sort();
+            foreach(var item in emstlist)
+            {
+                Console.WriteLine(item.Salary);
+            }
+
+            int x = e1.CompareTo(s1);
+            if (x == 0)
+            {
+                Console.WriteLine("Compare to - equal");
+            }
+            else
+            {
+                Console.WriteLine("Compare to - not equal");
+            }
+            //object o1;
+            //if(object.ReferenceEquals(s1,e4))
+            // {
+            //    Console.WriteLine("true");
+            //}
+            //else
+            //{
+
+            //    Console.WriteLine("false");
+            //}
+            //if (s1.Equals(e4))
+            //{
+            //    Console.WriteLine("Both are equal");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Not equal");
+            //}
+
+    //        IEnumerable<employee> result = (from i in emps
+    //                                        where i.City == "Chennai"
+    //                                        orderby i.Salary descending
+    //                                        select i).ToList();
+
+    //        var resu=(from i in emps
+    //                  where i.City=="Pune"
+    //                  select new {sal=i.Salary,name=i.Ename }).ToList();
+
+    //        foreach(var item in resu)
+    //        {
+    //            Console.WriteLine(item.name+" "+item.sal);
+    //        }
+
+    //        var res = emps.Where(i => i.City == "Bangalore").OrderByDescending(i=>i.Salary).Select(i => i).ToList();
+
+
+    //        if (res!= null)
+    //            foreach (var item in res)
+    //            {
+    //                Console.WriteLine(item.Salary);
+    //            }
+    //        else
+    //            Console.WriteLine("No object found");
+        }
+    }
+}
