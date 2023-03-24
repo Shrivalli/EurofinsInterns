@@ -1,0 +1,46 @@
+Agile :
+
+Agile is a methodology which is used to have an understanding of  the lifecycle of 
+the project.
+
+Scrum - Tool to implement Agile
+
+SDLC - Waterfall Model
+Incremental Model
+Sprial Model
+
+Lifecycle of Project - Waterfall Model
+1. Requirement Gathering - Business Analyst
+2. Analysis - Feasibility Study - Architects/BA/PM
+3. Design - High Level Design , Low Level Design - Architects/Project Managers
+4. Coding - Developers
+5. Testing - Testers
+6. Deployment - Devops Engineers/PM
+7. Maintenance - Support Engineers
+
+Agile Model - 
+Product owner- client
+Product Specification - User stories - Requirement Gathering
+Deadline - Sprint - 15 days
+Sprint Review Meeting - Scrum Master(PM),Developers, Testers , Devops
+Stand up Call
+Deliverables - 
+Testers and Developers  will work Parallely
+Sprint Backlog - 
+Burndown Chart
+
+Artifacts of Sprint - 
+1.Product Backlog
+2.Sprint Backlog 
+3.Product Increment.
+
+Scrum Ceremonies -
+1. Sprint Planning
+2. Daily scrum Meeting
+3. Sprint Review
+4. Sprint Retrospective
+
+Sprint Retrospective is an opportunity for the Scrum Team to inspect
+ itself and create a plan for improvements to be enacted during the next
+ Sprint. The Sprint Retrospective occurs after the Sprint Review and
+ prior to the next Sprint Planning.
