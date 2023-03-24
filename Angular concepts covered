@@ -1,0 +1,16 @@
+Angular basics
+typescript
+creating new project
+components
+types of binding - one way (interpolation), two way, property binding, event binding
+component interaction - services
+routing
+forms - template driven, reactive forms
+form validations 
+angular libraries - custom libraries
+pipes - custom pipes
+modules
+viewchild
+parent child interaction - @input, @output
+local storage
+authguards
